@@ -1,0 +1,4 @@
+modules/*
+modules/setup/
+ssh_pems/*
+!ssh_pems/.gitkeep

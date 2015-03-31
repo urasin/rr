@@ -29,7 +29,22 @@ if [ $# -eq 1 ]; then
     exit 0
 fi
 
-source ${BASE_DIR}/modules/${MODULE}/${COMMAND}/exec/exec.sh
+## aa:bbの時
+
+# \e[36;40m\]\u\[\e[0m\]
+RED_START="\e[31m"
+RED_END="\e[m"
+
+if [ -e ${BASE_DIR}/modules/${MODULE}/${COMMAND}/exec/exec.sh ]; then
+    source ${BASE_DIR}/modules/${MODULE}/${COMMAND}/exec/exec.sh
+else
+    ERROR_TEXT="${LINENO}: Comman not find \"${MODULE}:${COMMAND}\""
+    echo ${ERROR_TEXT}
+    # echo -e "${RED_START}rr ${LINENO}: Comman not find \"${MODULE}:${COMMAND}\"${RED_END}"
+    # echo "rr ${LINENO}: Comman not find \"${MODULE}:${COMMAND}\""
+    exit 127
+fi
+
 
 
 
